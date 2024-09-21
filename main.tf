@@ -102,8 +102,8 @@ resource "azurerm_container_group" "example" {
     memory = "0.2"
 
     volume {
-      name = "config"
-      read_only = true
+      name       = "config"
+      read_only  = true
       mount_path = "/etc/caddy"
       secret = {
         "Caddyfile" = base64encode(<<-EOF
@@ -120,11 +120,11 @@ resource "azurerm_container_group" "example" {
     # see https://caddyserver.com/docs/conventions#data-directory
     # see https://github.com/caddyserver/caddy-docker
     volume {
-      name = "data"
-      mount_path = "/data"
-      share_name = azurerm_storage_share.example.name
+      name                 = "data"
+      mount_path           = "/data"
+      share_name           = azurerm_storage_share.example.name
       storage_account_name = azurerm_storage_account.example.name
-      storage_account_key = azurerm_storage_account.example.primary_access_key
+      storage_account_key  = azurerm_storage_account.example.primary_access_key
     }
 
     ports {
