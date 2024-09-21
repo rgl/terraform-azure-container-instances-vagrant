@@ -45,6 +45,14 @@ time terraform apply tfplan
 # use the app.
 wget -qSO- "$(terraform output -raw url)"
 
+# show the app logs.
+# NB to show all the containers logs omit --container app.
+az container logs \
+  --resource-group rgl-terraform-container-instances-example \
+  --name example \
+  --container app \
+  --follow
+
 # destroy the infrastructure.
 terraform destroy
 ```
