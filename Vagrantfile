@@ -1,5 +1,5 @@
 Vagrant.configure(2) do |config|
-  config.vm.box = 'ubuntu-20.04-amd64'
+  config.vm.box = 'ubuntu-22.04-amd64'
 
   # NB this is needed because terraform/providers do not
   #    work over the /vagrant network shared directory.

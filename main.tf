@@ -1,18 +1,18 @@
 # see https://github.com/hashicorp/terraform
 terraform {
-  required_version = "1.0.11"
+  required_version = "1.9.6"
   required_providers {
     # see https://github.com/hashicorp/terraform-provider-random
     # see https://registry.terraform.io/providers/hashicorp/random
     random = {
       source  = "hashicorp/random"
-      version = "3.1.0"
+      version = "3.6.3"
     }
     # see https://github.com/terraform-providers/terraform-provider-azurerm
     # see https://registry.terraform.io/providers/hashicorp/azurerm
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.88.1"
+      version = "4.3.0"
     }
   }
 }
@@ -140,7 +140,7 @@ resource "azurerm_container_group" "example" {
 
   container {
     name     = "app"
-    image    = "ruilopes/example-docker-buildx-go:v1.4.0"
+    image    = "ruilopes/example-docker-buildx-go:v1.12.0"
     cpu      = "0.5"
     memory   = "0.2"
     commands = ["/app/example-docker-buildx-go", "-listen", "localhost:8080"]

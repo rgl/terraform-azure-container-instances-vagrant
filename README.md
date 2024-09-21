@@ -25,11 +25,13 @@ vagrant ssh
 # login into azure.
 az login
 
-# list the subscriptions and select the current one
-# if the default is not OK.
+# list the subscriptions.
 az account list --all
 az account show
-az account set --subscription <YOUR-SUBSCRIPTION-ID>
+
+# set the subscription.
+export ARM_SUBSCRIPTION_ID="<YOUR-SUBSCRIPTION-ID>"
+az account set --subscription "$ARM_SUBSCRIPTION_ID"
 
 # provision the example infrastructure.
 cd /vagrant
@@ -49,7 +51,6 @@ terraform destroy
 
 ## Caveats
 
-* [There is no support for initContainers (init containers) in the terraform provider](https://github.com/hashicorp/terraform-provider-azurerm/issues/8085).
 * [There is no way to known the end-user client IP address](https://feedback.azure.com/d365community/idea/c81db3f3-0c25-ec11-b6e6-000d3a4f0858).
   * **NB** The ACI container is behind a load balancer that does not preserve the client IP address.
 
